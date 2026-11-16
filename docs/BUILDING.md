@@ -5,7 +5,7 @@
 - Windows x64、PowerShell 7。
 - 上游 Codex `0.169.0`，Rust 工具链 `1.95.0`。
 - Visual Studio C++ 工具、Windows SDK、CMake、Ninja。
-- r5 预览构建使用 `dev-small`；完整的 `release` 优化构建尚未作为此预览包验证。
+- r6 预览构建使用 `dev-small`；完整的 `release` 优化构建尚未作为此预览包验证。
 
 源码和编译缓存会占用较多磁盘空间。建议把项目放在较短的路径，例如 `C:\src\codex-cli-zh`，并为 `.work` 预留充足空间。
 
@@ -61,9 +61,9 @@ pwsh -NoProfile -File .\scripts\Build-Windows.ps1
 pwsh -NoProfile -File .\scripts\Test-Localization.ps1
 ```
 
-该脚本选择 r5 涉及的 307 项 UI 回归测试。默认禁止自动更新快照。仅在有意改变文案或布局、并准备审阅差异时，才使用 `-UpdateSnapshots`。
+该脚本选择 r6 涉及的界面与行为回归测试，包含搜索、退出摘要、只读会话和快捷键检查。默认禁止自动更新快照。仅在有意改变文案或布局、并准备审阅差异时，才使用 `-UpdateSnapshots`。
 
-本地 r5 结果保存在 `docs/verification.json`。全量源码扫描发现的候选项仍需要人工区分：程序标识、用户内容和远端文本不能直接算作漏译。
+本地 r6 结果保存在 `docs/verification.json`。全量源码扫描发现的候选项仍需要人工区分：程序标识、用户内容和远端文本不能直接算作漏译。
 
 ## 打包
 
