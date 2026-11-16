@@ -1,0 +1,28 @@
+name: 漏译、错译或排版问题
+description: 报告一个可复现的中文界面问题
+title: "[汉化] "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: 版本
+      placeholder: "例如：0.169.0-zh.5 / r5"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 说明输入的命令、进入的页面及预期表现。
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 操作系统、终端程序、窗口宽度，以及是否使用 tmux/SSH 等。
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 截图或文本
+      description: 请遮挡账号、访问令牌和私人聊天内容。
