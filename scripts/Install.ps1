@@ -3,7 +3,7 @@
 param(
     [string]$PackageDirectory,
     [string]$Archive,
-    [string]$Version='v0.169.0-zh.5',
+    [string]$Version='v0.169.0-zh.6',
     [switch]$VerifyOnly,
     [switch]$NoPath
 )
