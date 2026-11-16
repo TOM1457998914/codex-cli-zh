@@ -1,0 +1,147 @@
+{
+  "baseline": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
+  "reviewedFor": "r6",
+  "scope": "Exact reviewed display adapters. This is not an exemption for future arbitrary changes.",
+  "changes": [
+    {
+      "file": "codex-rs/tui/src/analytics/chrome.rs",
+      "group": "help_lines|method:insert",
+      "before": [
+        "? · toggle this help"
+      ],
+      "after": [
+        "? · 显示或隐藏此帮助"
+      ],
+      "reason": "Visible help text inserted into rendered lines; no binding or parser key changes."
+    },
+    {
+      "file": "codex-rs/tui/src/app/exit_summary.rs",
+      "group": "format_exit_messages|method:replacen",
+      "before": [
+        "Token usage:",
+        "Token usage so far:"
+      ],
+      "after": [],
+      "reason": "The fragile prefix replacement was moved into a dedicated display adapter; underlying TokenUsage formatting and counts remain unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/app/exit_summary.rs",
+      "group": "localized_token_summary|method:strip_prefix",
+      "before": [],
+      "after": [
+        "Token usage:"
+      ],
+      "reason": "The upstream English prefix must remain exactly Token usage:; changing this matching string is a regression."
+    },
+    {
+      "file": "codex-rs/tui/src/app/exit_summary.rs",
+      "group": "localized_token_summary|method:replace",
+      "before": [],
+      "after": [
+        "total=",
+        "非缓存合计=",
+        "input=",
+        "输入=",
+        "output=",
+        "输出=",
+        " cached)",
+        " 缓存)",
+        "(reasoning ",
+        "(推理 "
+      ],
+      "reason": "Known labels in the upstream formatted summary are localized at the output boundary; numeric text is preserved verbatim."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/misalignment_policy.rs",
+      "group": "show_misalignment_policy_precaution|method:insert",
+      "before": [
+        "Review findings",
+        "Agent command center"
+      ],
+      "after": [
+        "Review findings",
+        "代理管理中心"
+      ],
+      "reason": "Selection item display name only; typed AppEvent actions are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/realtime_settings.rs",
+      "group": "open_realtime_device_picker|method:insert",
+      "before": [
+        "Input channels",
+        "All channels (mixed)",
+        "Inputs {}",
+        ", "
+      ],
+      "after": [
+        "输入声道",
+        "全部声道（混音）",
+        "输入 {}",
+        ", "
+      ],
+      "reason": "Channel heading and description only; the device object and OpenRealtimeInputChannels event are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/keymap_setup/actions.rs",
+      "group": "action_label|comparison",
+      "before": [
+        "change_host"
+      ],
+      "after": [],
+      "reason": "Display labels now come from the same action catalog; all configuration action IDs and feature gates are separately compared."
+    },
+    {
+      "file": "codex-rs/tui/src/keymap_setup/actions.rs",
+      "group": "action_label|method:replace",
+      "before": [],
+      "after": [
+        " "
+      ],
+      "reason": "Presentation fallback for unknown action names; not parsed or stored as an action ID."
+    },
+    {
+      "file": "codex-rs/tui/src/resume_picker.rs",
+      "group": "footer_hint_lines|field:key",
+      "before": [
+        "loading",
+        "tab"
+      ],
+      "after": [
+        "正在加载",
+        "tab"
+      ],
+      "reason": "Loading is a noninteractive footer label; the actual tab shortcut is unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/status/rate_limits.rs",
+      "group": "credit_status_row|field:value",
+      "before": [
+        "Unlimited"
+      ],
+      "after": [
+        "无限制"
+      ],
+      "reason": "Text in a display-only quota row; the server unlimited flag and credit amounts are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/keymap_setup/picker.rs",
+      "group": "keymap_selection_item|method:replace",
+      "before": [],
+      "after": [
+        " "
+      ],
+      "reason": "Search-only aliases expand underscores to spaces; selected context and action IDs are preserved and exercised by a regression test."
+    },
+    {
+      "file": "codex-rs/tui/src/status/rate_limits.rs",
+      "group": "compose_rate_limit_data_many|field:value",
+      "before": [
+        "{} of {} credits used"
+      ],
+      "after": [
+        "已用额度 {} / {}"
+      ],
+      "reason": "Display-only quota description; used and limit remain in the same order, and percentages and server values are unchanged."
+    }
+  ]
+}
