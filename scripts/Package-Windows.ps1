@@ -27,7 +27,7 @@ foreach ($file in Get-ChildItem -LiteralPath $stage -File -Recurse | Sort-Object
     $relative = [IO.Path]::GetRelativePath($stage,$file.FullName).Replace('\','/')
     $files[$relative] = (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
 }
-@{ project='codex-cli-zh'; version=$version.releaseTag; target=$version.testedTarget; upstreamVersion=$version.upstreamVersion; upstreamCommit=$version.upstreamCommit; buildProfile=$version.buildProfile; official=$false; allUiTranslated=$false; files=$files } |
+@{ project='codex-cli-zh'; version=$version.releaseTag; revision=$version.revision; target=$version.testedTarget; upstreamVersion=$version.upstreamVersion; upstreamCommit=$version.upstreamCommit; patchSha256=$version.patchSha256; buildProfile=$version.buildProfile; official=$false; allUiTranslated=$false; files=$files } |
     ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $stage 'release.json') -Encoding utf8
 & (Join-Path $PSScriptRoot 'Install.ps1') -PackageDirectory $stage -VerifyOnly
 $archive = Join-Path $OutputDirectory "codex-cli-zh-$($version.releaseTag)-windows-x64.zip"
