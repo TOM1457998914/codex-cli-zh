@@ -1,0 +1,20 @@
+{
+  "Continuation request (quoted)": "继续执行的请求（原文）",
+  "What we detected": "检测到的问题",
+  "Added global MCP server '{name}'.": "已添加全局 MCP 服务器 '{name}'。",
+  "OAuth callback URL: {callback_url}": "OAuth 回调网址：{callback_url}",
+  "Detected OAuth support. Starting OAuth flow…": "检测到 OAuth 支持，正在启动认证流程…",
+  "Successfully logged in.": "已成功登录。",
+  "MCP server may or may not require login. Run `codex mcp login {name}` to login.": "尚无法确定此 MCP 服务器是否需要登录。如需登录，请运行 `codex mcp login {name}`。",
+  "Removed global MCP server '{name}'.": "已移除全局 MCP 服务器 '{name}'。",
+  "No MCP server named '{name}' found.": "未找到名为 '{name}' 的 MCP 服务器。",
+  "Successfully logged in to MCP server '{name}'.": "已成功登录 MCP 服务器 '{name}'。",
+  "Removed the shared enterprise authorization used by EMA MCP servers (selected via '{name}').": "已移除 EMA MCP 服务器共用的企业授权（通过 '{name}' 选择）。",
+  "No shared enterprise authorization is stored.": "未保存共享的企业授权。",
+  "Removed OAuth credentials for '{name}'.": "已移除 '{name}' 的 OAuth 凭据。",
+  "No OAuth credentials stored for '{name}'.": "未保存 '{name}' 的 OAuth 凭据。",
+  "No MCP servers configured yet. Try `codex mcp add my-tool -- my-command`.": "尚未配置 MCP 服务器。可以尝试 `codex mcp add my-tool -- my-command`。",
+  "{name} (disabled: {reason})": "{name}（已禁用：{reason}）",
+  "{name} (disabled)": "{name}（已禁用）",
+  "  remove: codex mcp remove {}": "  移除：codex mcp remove {}"
+}

@@ -1218,7 +1218,7 @@
   "Connected to your IDE.": "已连接到你的编辑器。",
   "IDE context was skipped for this message.": "这条消息未附带编辑器上下文。",
   "Daybreak requires the OpenAI provider with either ChatGPT sign-in or an API key with Daybreak support enabled.": "使用 Daybreak 需选择 OpenAI 服务商，并通过 ChatGPT 登录，或使用已启用 Daybreak 支持的 API 密钥。",
-  "Daybreak is not available for this account. Apply at https://openai.com/form/enterprise-trusted-access-for-cyber/. Learn more at https://help.openai.com/en/articles/20001326.": "此账号暂不可使用 Daybreak。申请地址：https://openai.com/form/enterprise-trusted-access-for-cyber/。了解详情：https://help.openai.com/en/articles/20001326。",
+  "Daybreak is not available for this account. Apply at https://openai.com/form/enterprise-trusted-access-for-cyber/. Learn more at https://help.openai.com/en/articles/20001326.": "此账号暂不可使用 Daybreak。申请地址：https://openai.com/form/enterprise-trusted-access-for-cyber/ 。了解详情：https://help.openai.com/en/articles/20001326。",
   "Daybreak availability could not be determined from the connected host's model catalog.": "无法从已连接主机的模型目录确定 Daybreak 是否可用。",
   "Daybreak is unavailable until the thread starts.": "聊天启动前无法使用 Daybreak。"
 }
