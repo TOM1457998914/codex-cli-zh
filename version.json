@@ -1,0 +1,19 @@
+{
+  "project": "codex-cli-zh",
+  "upstreamRepository": "https://github.com/openai/codex.git",
+  "upstreamVersion": "0.169.0",
+  "upstreamTag": "rust-v0.169.0",
+  "upstreamCommit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
+  "revision": "r5",
+  "releaseTag": "v0.169.0-zh.5",
+  "rustToolchain": "1.95.0",
+  "testedTarget": "x86_64-pc-windows-msvc",
+  "buildProfile": "dev-small",
+  "patch": "patches/codex-0.169.0-zh-r5.patch",
+  "patchSha256": "655764cbfa7bb16e66594974b894cf8d8128d155a62969d3e0c1b21ba62834b3",
+  "v8Repository": "https://github.com/openai-oss-forks/rusty_v8.git",
+  "v8Revision": "90a65f887a0c0f048f3784afbcb320b373c8a2e0",
+  "v8Release": "rusty-v8-v152.2.0",
+  "v8Manifest": "rusty_v8_ptrcomp_sandbox_release_x86_64-pc-windows-msvc.sha256",
+  "v8ManifestSha256": "e16bf2d7bc4b64a96a89e87048d61b9c466040e4c82ae64cfe9f7f2052ef3179"
+}

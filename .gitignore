@@ -1,0 +1,17 @@
+.work/
+artifacts/
+target/
+node_modules/
+.codex/
+auth.json
+config.toml
+*.log
+*.exe
+*.dll
+*.zip
+*.tar
+*.gz
+*.pending-snap
+*.snap.new
+Thumbs.db
+.DS_Store
