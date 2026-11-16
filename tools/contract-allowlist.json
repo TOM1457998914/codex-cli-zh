@@ -1,8 +1,30 @@
 {
   "baseline": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
-  "reviewedFor": "r6",
-  "scope": "Exact reviewed display adapters. This is not an exemption for future arbitrary changes.",
+  "reviewedFor": "r7",
+  "scope": "Exact reviewed display adapters, never a general exemption for identifiers or parsing changes.",
   "changes": [
+    {
+      "file": "codex-rs/cli/src/doctor/output.rs",
+      "group": "write_detail_line|pattern",
+      "before": [],
+      "after": [
+        "managed by",
+        "feature flags",
+        "enabled flags"
+      ],
+      "reason": "Display-only translation of raw doctor detail labels. The machine-report producers are separately required to remain byte-for-byte equivalent after newline normalization."
+    },
+    {
+      "file": "codex-rs/tui/src/analytics/chat_panel.rs",
+      "group": "chat_lines|local:model",
+      "before": [
+        "Not reported"
+      ],
+      "after": [
+        "未报告"
+      ],
+      "reason": "Placeholder in a rendered analytics panel when the backend did not report a model; no model identifier or request value changes."
+    },
     {
       "file": "codex-rs/tui/src/analytics/chrome.rs",
       "group": "help_lines|method:insert",
@@ -13,6 +35,17 @@
         "? · 显示或隐藏此帮助"
       ],
       "reason": "Visible help text inserted into rendered lines; no binding or parser key changes."
+    },
+    {
+      "file": "codex-rs/tui/src/analytics/task_panel.rs",
+      "group": "task_lines|local:model",
+      "before": [
+        "Not reported"
+      ],
+      "after": [
+        "未报告"
+      ],
+      "reason": "Placeholder in a rendered task analytics panel; supplied model names remain unchanged."
     },
     {
       "file": "codex-rs/tui/src/app/exit_summary.rs",
@@ -52,6 +85,119 @@
       "reason": "Known labels in the upstream formatted summary are localized at the output boundary; numeric text is preserved verbatim."
     },
     {
+      "file": "codex-rs/tui/src/app/side.rs",
+      "group": "sync_side_thread_ui|local:action",
+      "before": [
+        "archive",
+        "close"
+      ],
+      "after": [
+        "归档",
+        "关闭"
+      ],
+      "reason": "Words used only in the side-pane footer; typed Close/Archive events and bindings remain unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/app/transcript_export.rs",
+      "group": "render_markdown_transcript|comparison",
+      "before": [
+        "# Codex conversation\n"
+      ],
+      "after": [],
+      "reason": "The empty export comparison now uses the same HEADER constant as the rendered title."
+    },
+    {
+      "file": "codex-rs/tui/src/app/tui_mode_picker.rs",
+      "group": "save_fullscreen_transcript|local:mode",
+      "before": [
+        "Fullscreen",
+        "Scrollback"
+      ],
+      "after": [
+        "全屏模式",
+        "滚动模式"
+      ],
+      "reason": "Confirmation text only; the saved fullscreen_transcript setting remains the original boolean."
+    },
+    {
+      "file": "codex-rs/tui/src/bottom_pane/footer.rs",
+      "group": "side_conversation_context_line|method:strip_prefix",
+      "before": [
+        "Side "
+      ],
+      "after": [
+        "Side ",
+        "旁支 "
+      ],
+      "reason": "Recognizes both the original and localized display label to retain its style."
+    },
+    {
+      "file": "codex-rs/tui/src/bottom_pane/status_surface_preview.rs",
+      "group": "rate_limit_preview_copy|method:starts_with",
+      "before": [
+        "secondary usage ",
+        "usage ",
+        "5h ",
+        "daily ",
+        "weekly ",
+        "monthly ",
+        "annual "
+      ],
+      "after": [
+        "secondary usage ",
+        "次要用量 ",
+        "usage ",
+        "主要用量 ",
+        "5h ",
+        "5 小时 ",
+        "daily ",
+        "每日 ",
+        "weekly ",
+        "每周 ",
+        "monthly ",
+        "每月 ",
+        "annual ",
+        "每年 "
+      ],
+      "reason": "Recognizes Chinese and original English display prefixes while returning unchanged canonical status-item IDs."
+    },
+    {
+      "file": "codex-rs/tui/src/bottom_pane/voice_strip.rs",
+      "group": "render|pattern",
+      "before": [],
+      "after": [
+        "connecting",
+        "listening",
+        "thinking",
+        "speaking",
+        "muted",
+        "heard"
+      ],
+      "reason": "Voice presentation adapter matches known canonical activity values, localizes their labels, and preserves unknown values. The underlying voice state and telemetry are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/input_flow.rs",
+      "group": "refresh_pending_input_preview|method:insert",
+      "before": [
+        "Preparing images: {}"
+      ],
+      "after": [
+        "正在准备图片：{}"
+      ],
+      "reason": "User-visible image preparation message inserted into the rendered preview."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/interaction.rs",
+      "group": "prepare_last_response_copy|local:action",
+      "before": [
+        "No agent response to copy"
+      ],
+      "after": [
+        "没有可复制的代理回复"
+      ],
+      "reason": "Only the empty-response error message changes; the copied response and action enum are untouched."
+    },
+    {
       "file": "codex-rs/tui/src/chatwidget/misalignment_policy.rs",
       "group": "show_misalignment_policy_precaution|method:insert",
       "before": [
@@ -59,10 +205,30 @@
         "Agent command center"
       ],
       "after": [
-        "Review findings",
+        "审查结果",
         "代理管理中心"
       ],
-      "reason": "Selection item display name only; typed AppEvent actions are unchanged."
+      "reason": "Selection item display labels only; typed actions remain unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/plugin_catalog.rs",
+      "group": "remote_section_error_tab|comparison",
+      "before": [],
+      "after": [
+        "workspace"
+      ],
+      "reason": "Uses the unchanged workspace section ID to localize the built-in section label; unknown labels retain the server value."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/protocol_requests.rs",
+      "group": "on_guardian_review_notification|local:action",
+      "before": [
+        "failed to localize guardian filesystem paths: {err}"
+      ],
+      "after": [
+        "转换审批器文件系统路径失败：{err}"
+      ],
+      "reason": "Human error text when native path conversion fails; the action conversion and early return are unchanged."
     },
     {
       "file": "codex-rs/tui/src/chatwidget/realtime_settings.rs",
@@ -80,6 +246,77 @@
         ", "
       ],
       "reason": "Channel heading and description only; the device object and OpenRealtimeInputChannels event are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/chatwidget/settings.rs",
+      "group": "set_collaboration_mask|method:trim_end_matches",
+      "before": [],
+      "after": [
+        "模式"
+      ],
+      "reason": "Avoids repeating the Chinese word for mode in a display-only confirmation; model and mode IDs are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/history_cell/hook_cell.rs",
+      "group": "output_lines|method:insert",
+      "before": [
+        "↳ Hook · ",
+        "{HOOK_OUTPUT_INDENT}└ "
+      ],
+      "after": [
+        "↳ 钩子 · ",
+        "{HOOK_OUTPUT_INDENT}└ "
+      ],
+      "reason": "Rendered hook provenance prefix only; hook output remains verbatim."
+    },
+    {
+      "file": "codex-rs/tui/src/keymap_setup.rs",
+      "group": "key_parts_to_config_key_spec|local:key",
+      "before": [
+        "enter",
+        "tab",
+        "tab",
+        "backspace",
+        "esc",
+        "delete",
+        "up",
+        "down",
+        "left",
+        "right",
+        "home",
+        "end",
+        "page-up",
+        "page-down",
+        "f{number}",
+        "Only function keys F1 through F{MAX_FUNCTION_KEY} can be stored in `tui.keymap`.",
+        "space",
+        "minus",
+        "Only printable ASCII keys can be stored in `tui.keymap`.",
+        "That key is not supported by `tui.keymap`."
+      ],
+      "after": [
+        "enter",
+        "tab",
+        "tab",
+        "backspace",
+        "esc",
+        "delete",
+        "up",
+        "down",
+        "left",
+        "right",
+        "home",
+        "end",
+        "page-up",
+        "page-down",
+        "f{number}",
+        "`tui.keymap` 仅支持 F1 到 F{MAX_FUNCTION_KEY} 功能键。",
+        "space",
+        "minus",
+        "`tui.keymap` 仅支持可打印的 ASCII 字符键。",
+        "`tui.keymap` 不支持该按键。"
+      ],
+      "reason": "Only three validation error messages are translated. Every canonical key name and f{number} format stays identical to upstream."
     },
     {
       "file": "codex-rs/tui/src/keymap_setup/actions.rs",
@@ -100,6 +337,15 @@
       "reason": "Presentation fallback for unknown action names; not parsed or stored as an action ID."
     },
     {
+      "file": "codex-rs/tui/src/keymap_setup/picker.rs",
+      "group": "keymap_selection_item|method:replace",
+      "before": [],
+      "after": [
+        " "
+      ],
+      "reason": "Search-only aliases expand underscores to spaces; selected context and action IDs are preserved and exercised by a regression test."
+    },
+    {
       "file": "codex-rs/tui/src/resume_picker.rs",
       "group": "footer_hint_lines|field:key",
       "before": [
@@ -113,24 +359,17 @@
       "reason": "Loading is a noninteractive footer label; the actual tab shortcut is unchanged."
     },
     {
-      "file": "codex-rs/tui/src/status/rate_limits.rs",
-      "group": "credit_status_row|field:value",
-      "before": [
-        "Unlimited"
-      ],
-      "after": [
-        "无限制"
-      ],
-      "reason": "Text in a display-only quota row; the server unlimited flag and credit amounts are unchanged."
-    },
-    {
-      "file": "codex-rs/tui/src/keymap_setup/picker.rs",
-      "group": "keymap_selection_item|method:replace",
+      "file": "codex-rs/tui/src/status/card.rs",
+      "group": "decorate_workspace_sandbox_label|pattern",
       "before": [],
       "after": [
-        " "
+        "read-only",
+        "read-only with network access",
+        "workspace",
+        "workspace with network access",
+        "custom permissions with network access"
       ],
-      "reason": "Search-only aliases expand underscores to spaces; selected context and action IDs are preserved and exercised by a regression test."
+      "reason": "Display adapter for unchanged canonical permission summaries; the preceding classifier is separately checked against upstream."
     },
     {
       "file": "codex-rs/tui/src/status/rate_limits.rs",
@@ -142,6 +381,127 @@
         "已用额度 {} / {}"
       ],
       "reason": "Display-only quota description; used and limit remain in the same order, and percentages and server values are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/status/rate_limits.rs",
+      "group": "credit_status_row|field:value",
+      "before": [
+        "Unlimited"
+      ],
+      "after": [
+        "无限制"
+      ],
+      "reason": "Text in a display-only quota row; the server unlimited flag and credit amounts are unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/transcript_view/copy_mode.rs",
+      "group": "move_copy_target|method:insert",
+      "before": [
+        "User message"
+      ],
+      "after": [
+        "用户消息"
+      ],
+      "reason": "Visible copy-target label only; source text and range data remain unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/transcript_view/copy_mode.rs",
+      "group": "move_copy_target|comparison",
+      "before": [
+        "Code block",
+        "Blockquote"
+      ],
+      "after": [],
+      "reason": "Copy-kind comparisons and producers now share CODE_BLOCK_LABEL/BLOCKQUOTE_LABEL constants, covered by original-source copy tests."
+    },
+    {
+      "file": "codex-rs/tui/src/transcript_view/footer.rs",
+      "group": "navigation_line|local:action",
+      "before": [
+        " copy & follow",
+        " copy & latest",
+        " clear selection",
+        " copy+↓",
+        " move",
+        " ends",
+        " page",
+        " mark",
+        " find",
+        " swap",
+        " previous",
+        " accept",
+        " cancel",
+        " older",
+        " newer",
+        " latest",
+        " retry",
+        " select",
+        " copy",
+        " clear",
+        " next",
+        " close"
+      ],
+      "after": [
+        " 复制并跟随最新",
+        " 复制并跟随",
+        " 清除选区",
+        " 复制＋↓",
+        " 交换端点",
+        " 下一个",
+        " 下一项",
+        " 上一个",
+        " 移动",
+        " 首尾",
+        " 翻页",
+        " 选择",
+        " 查找",
+        " 接受",
+        " 取消",
+        " 更早",
+        " 较新",
+        " 最新",
+        " 重试",
+        " 复制",
+        " 清除",
+        " 关闭",
+        " copy & follow",
+        " copy & latest",
+        " clear selection",
+        " copy+↓",
+        " move",
+        " ends",
+        " page",
+        " mark",
+        " find",
+        " swap",
+        " previous",
+        " accept",
+        " cancel",
+        " older",
+        " newer",
+        " latest",
+        " retry",
+        " select",
+        " copy",
+        " clear",
+        " next",
+        " close"
+      ],
+      "reason": "Retains original English hint suffixes and adds localized suffixes solely for shortcut styling; unknown prose is unchanged."
+    },
+    {
+      "file": "codex-rs/tui/src/transcript_view/turn_details.rs",
+      "group": "layout|method:starts_with",
+      "before": [
+        "Search"
+      ],
+      "after": [
+        "Search",
+        "正在搜索",
+        "已搜索",
+        "搜索"
+      ],
+      "reason": "Display-only search glyph detection recognizes original and localized search labels. Tool activity IDs and command data remain unchanged."
     }
   ]
 }

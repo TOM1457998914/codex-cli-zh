@@ -93,6 +93,47 @@ impl<'a> Visit<'a> for Collector {
         visit::visit_pat(self, n);
         self.kind = old;
     }
+    fn visit_local(&mut self, n: &'a Local) {
+        let pattern = match &n.pat {
+            Pat::Type(typed) => typed.pat.as_ref(),
+            other => other,
+        };
+        let old = self.kind.clone();
+        if let Pat::Ident(binding) = pattern {
+            let name = binding.ident.to_string();
+            if [
+                "id",
+                "key",
+                "config_key",
+                "action",
+                "action_id",
+                "model",
+                "mode",
+            ]
+            .contains(&name.as_str())
+            {
+                self.kind = Some(format!("local:{name}"));
+            }
+        }
+        visit::visit_local(self, n);
+        self.kind = old;
+    }
+    fn visit_expr_tuple(&mut self, n: &'a ExprTuple) {
+        let keymap_context = matches!(n.elems.first(), Some(Expr::Path(path))
+            if path.path.segments.iter().any(|segment| segment.ident == "KeymapContext"));
+        if keymap_context {
+            for (index, value) in n.elems.iter().enumerate() {
+                let old = self.kind.clone();
+                if index == 1 {
+                    self.kind = Some("keymap-action".into());
+                }
+                visit::visit_expr(self, value);
+                self.kind = old;
+            }
+        } else {
+            visit::visit_expr_tuple(self, n);
+        }
+    }
     fn visit_expr_method_call(&mut self, n: &'a ExprMethodCall) {
         let old = self.kind.clone();
         if [
@@ -159,6 +200,36 @@ impl<'a> Visit<'a> for Collector {
         let Some(name) = n.path.segments.last().map(|s| s.ident.to_string()) else {
             return;
         };
+        if name == "matches" {
+            use syn::parse::Parser;
+            let parser =
+                |input: syn::parse::ParseStream| -> syn::Result<(Expr, Pat, Option<Expr>)> {
+                    let value = input.parse()?;
+                    let _: Token![,] = input.parse()?;
+                    let pattern = Pat::parse_multi_with_leading_vert(input)?;
+                    let guard = if input.peek(Token![if]) {
+                        let _: Token![if] = input.parse()?;
+                        Some(input.parse()?)
+                    } else {
+                        None
+                    };
+                    if input.peek(Token![,]) {
+                        let _: Token![,] = input.parse()?;
+                    }
+                    Ok((value, pattern, guard))
+                };
+            let (value, pattern, guard) = parser.parse2(n.tokens.clone()).unwrap_or_else(|error| {
+                panic!("Could not inspect matches! in {}: {error}", self.function)
+            });
+            visit::visit_expr(self, &value);
+            let old = self.kind.replace("pattern".into());
+            visit::visit_pat(self, &pattern);
+            self.kind = old;
+            if let Some(guard) = guard {
+                visit::visit_expr(self, &guard);
+            }
+            return;
+        }
         if [
             "format",
             "format_args",
@@ -242,6 +313,46 @@ mod contract_tests {
         };
         c.visit_file(&ast);
         c.values
+    }
+    #[test]
+    fn matches_macro_preserves_alias_patterns_and_guard_keys() {
+        let values = collect(
+            r#"fn dispatch(value: &str) {
+            let label = "Human label";
+            let _ = matches!(value, | "disable" | "hide" | "off" | "none",);
+            let _ = matches!(value, "active" if map.contains_key("wire_key"));
+        }"#,
+        );
+        for expected in ["disable", "hide", "off", "none", "active", "wire_key"] {
+            assert!(
+                values.iter().any(|value| value.text == expected),
+                "{expected}"
+            );
+        }
+        assert!(!values.iter().any(|value| value.text == "Human label"));
+    }
+    #[test]
+    #[should_panic(expected = "Could not inspect matches!")]
+    fn unsupported_matches_syntax_cannot_silently_bypass_the_audit() {
+        collect(r#"fn parse(value: &str) { let _ = matches!(value,); }"#);
+    }
+    #[test]
+    fn checks_indirect_keymap_actions_and_named_identifiers() {
+        let values = collect(
+            r#"fn hint() {
+            let (context, action) = (KeymapContext::Composer, "submit");
+            let key: &str = "wire_key";
+            let action = if enabled { "enable" } else { "disable" };
+            let label = "Human label";
+        }"#,
+        );
+        for expected in ["submit", "wire_key", "enable", "disable"] {
+            assert!(
+                values.iter().any(|value| value.text == expected),
+                "{expected}"
+            );
+        }
+        assert!(!values.iter().any(|value| value.text == "Human label"));
     }
     #[test]
     fn checks_parser_aliases_and_wire_keys_without_treating_plain_labels_as_contracts() {

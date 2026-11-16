@@ -21,7 +21,20 @@ for (const [, before, after] of diffs) {
 }
 const verification = JSON.parse(read('docs/verification.json'));
 assert.equal(verification.upstreamCommit, version.upstreamCommit);
+assert.equal(verification.revision, version.revision, 'Verification belongs to another revision');
 assert.equal(verification.uiTests.failed, 0);
+assert.equal(verification.uiTests.snapshotAutoUpdate, false, 'Release tests must pass without updating snapshots');
+if (Number(version.revision.slice(1)) >= 7) {
+  for (const name of ['cliTests','cloudTests','execTests']) {
+    assert(verification[name]?.passed > 0, `Missing ${name} result`);
+    assert.equal(verification[name].failed, 0, `${name} failed`);
+    assert.equal(verification[name].snapshotAutoUpdate, false, `${name} updated snapshots`);
+  }
+  for (const name of ['indirectIdentifiersChecked','permissionClassifierUnchanged','voiceTelemetryUnchanged','statusLookupKeysUnchanged','doctorMachineReportUnchanged','pluginJsonPoliciesUnchanged']) {
+    assert.equal(verification.contracts[name], true, `Missing contract guard: ${name}`);
+  }
+  assert.equal(verification.contracts.passed, true, 'Contract audit failed');
+}
 assert.equal(verification.allUiTranslated, false);
 const ignored = new Set(['.git', '.work', 'artifacts', 'node_modules', 'target']);
 let files = 0;
