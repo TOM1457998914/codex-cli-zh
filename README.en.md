@@ -4,9 +4,9 @@
 
 An unofficial source-level localization overlay for [OpenAI Codex](https://github.com/openai/codex), pinned to `rust-v0.169.0` / `d32063f96c2dff1dc96af839b3952abb6acfeda4`.
 
-The current preview is **r6**, tested on **Windows x64**. It translates common menus, session pickers, keymap settings, plugins, apps, usage analytics, MCP status and tooltips. Configuration keys, command names, protocol identifiers and user content are preserved.
+The current preview is **r7**, tested on **Windows x64**. It translates common menus, session pickers, keymap settings, plugins, apps, usage analytics, MCP status and tooltips. Configuration keys, command names, protocol identifiers and user content are preserved.
 
-Localization is ongoing. CLI help, low-frequency messages and some server-provided text remain untranslated. This project is not affiliated with or endorsed by OpenAI.
+Localization is ongoing. Static CLI help and more low-frequency workflows are now covered. Some server-provided messages, third-party errors and raw diagnostics retain their original text. This project is not affiliated with or endorsed by OpenAI.
 
 ## Install
 
@@ -22,7 +22,7 @@ Open a new terminal and run `codex-zh`. The official `codex` command remains sep
 
 See [BUILDING.md](docs/BUILDING.md). The repository supplies a pinned source patch, reference translation catalogs and PowerShell tooling. V8 artifacts are verified against the checksum manifest pinned by the upstream release.
 
-r6 fixes search compatibility, context-specific shortcut labels, exit usage summaries and CJK column widths. The final local regression selection passed **363 tests**, with snapshot updates disabled. Results are recorded in [verification.json](docs/verification.json). CI checks project integrity, PowerShell syntax, clean patch application and identifier contracts. It does not run the full upstream test suite.
+r7 fixes translated internal identifiers, copy payloads, paste-label collisions, CJK geometry, URL targets and shortcut hints. Final local verification passed 6052 TUI, 310 CLI, 24 cloud-task and 64 noninteractive-output unit tests, with snapshot updates and retries disabled. The upstream Nextest runner isolates test processes. See [verification.json](docs/verification.json) and [the audit record](docs/AUDIT-r7.md). CI verifies project integrity, PowerShell syntax, clean patch application and identifier contracts; the full Windows test run is recorded separately.
 
 The preview executable uses the unoptimized `dev-small` profile. It is an unsigned community build and does not support updating this localization through `codex update`.
 
