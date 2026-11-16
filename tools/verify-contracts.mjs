@@ -20,6 +20,12 @@ const output = path.join(project, '.work/contract-audit');
 fs.mkdirSync(output, { recursive:true });
 const reference = path.join(output, 'upstream-reference.rs');
 const extract = file => JSON.parse(cp.execFileSync(binary, [file], {encoding:'utf8',maxBuffer:12e6}));
+fs.writeFileSync(reference,'fn audit_probe(value: &str) { let _ = matches!(value, "disable" | "hide" | "off" | "none"); let (context, action) = (KeymapContext::Composer, "submit"); let key = "leader f24"; }');
+const probe=extract(reference);
+const macroProbe=probe.filter(entry=>entry.kind==='pattern').map(entry=>entry.text);
+assert.deepEqual(macroProbe,['disable','hide','off','none'],'The audit binary must support matches! patterns; rebuild tools/Cargo.toml');
+assert.deepEqual(probe.filter(entry=>entry.kind==='keymap-action').map(entry=>entry.text),['submit'],'The audit binary must inspect indirect action lookups');
+assert.deepEqual(probe.filter(entry=>entry.kind==='local:key').map(entry=>entry.text),['leader f24'],'The audit binary must inspect canonical key strings');
 const changes=[];
 for (const file of files) {
   fs.writeFileSync(reference, git(['show',version.upstreamCommit+':'+file]));
@@ -43,6 +49,33 @@ function keymapInventory(text) {
 }
 const current=file=>fs.readFileSync(path.join(source,file),'utf8').replace(/\r\n/g,'\n');
 const original=file=>git(['show',version.upstreamCommit+':'+file]).replace(/\r\n/g,'\n');
+// These tuple keys feed compose_model_display; translating them hides model details.
+const statusKeys=text=>{
+  const block=text.match(/let mut config_entries = vec!\[([\s\S]*?)let \(model_name, model_details\) = compose_model_display/);
+  assert(block,'Status configuration map not found');
+  return [...block[1].matchAll(/"(?:\\.|[^"\\])*"/g)].map(match=>match[0]);
+};
+const statusCard='codex-rs/tui/src/status/card.rs';
+assert.deepEqual(statusKeys(current(statusCard)),statusKeys(original(statusCard)),'Status model lookup keys changed');
+const functionBlock=(text,name)=>{
+  const start=text.indexOf('fn '+name+'('),end=text.indexOf('\n}\n',start)+3;
+  assert(start>=0&&end>start,'Function not found: '+name);
+  return text.slice(start,end);
+};
+assert.equal(functionBlock(current(statusCard),'status_permission_summary'),functionBlock(original(statusCard),'status_permission_summary'),'Permission classification values changed before display');
+const voiceMetrics='codex-rs/tui/src/chatwidget/realtime/failure_metrics.rs';
+assert.equal(current(voiceMetrics),original(voiceMetrics),'Voice telemetry dimensions changed');
+for(const file of ['background.rs','filesystem_paths.rs','updates.rs']) {
+  const producer='codex-rs/cli/src/doctor/'+file;
+  assert.equal(current(producer),original(producer),'Doctor machine-report producer changed: '+file);
+}
+const pluginPolicies=text=>['install_policy_label','auth_policy_label'].map(name=>{
+  const block=text.match(new RegExp('fn '+name+'[\\s\\S]*?\\n\\}'));
+  assert(block,'Plugin policy formatter not found');
+  return [...block[0].matchAll(/"(?:\\.|[^"\\])*"/g)].map(match=>match[0]);
+});
+const plugin='codex-rs/cli/src/plugin_cmd.rs';
+assert.deepEqual(pluginPolicies(current(plugin)),pluginPolicies(original(plugin)),'Plugin JSON policy values changed');
 const keymap='codex-rs/tui/src/keymap_setup/actions.rs';
 assert.deepEqual(keymapInventory(current(keymap)),keymapInventory(original(keymap)),'Keymap IDs or feature gates changed');
 const slash='codex-rs/tui/src/slash_command.rs';
@@ -60,7 +93,7 @@ const equal=(a,b)=>JSON.stringify([a.file,a.group,a.before,a.after])===JSON.stri
 fs.writeFileSync(path.join(output,'proposal.json'),JSON.stringify({changes},null,2)+'\n');
 const unexpected=changes.filter(change=>!approved.changes.some(entry=>equal(change,entry)));
 const stale=approved.changes.filter(entry=>!changes.some(change=>equal(change,entry)));
-const report={checkedFiles:files.length,keymapActions:keymapInventory(current(keymap)).length,slashDispatchUnchanged:true,serializedStatusItemsUnchanged:true,tooltipTokensUnchanged:true,reviewedChanges:changes.length,unexpected,stale,passed:!unexpected.length&&!stale.length};
+const report={checkedFiles:files.length,keymapActions:keymapInventory(current(keymap)).length,indirectIdentifiersChecked:true,statusLookupKeysUnchanged:true,permissionClassifierUnchanged:true,voiceTelemetryUnchanged:true,doctorMachineReportUnchanged:true,pluginJsonPoliciesUnchanged:true,slashDispatchUnchanged:true,serializedStatusItemsUnchanged:true,tooltipTokensUnchanged:true,reviewedChanges:changes.length,unexpected,stale,passed:!unexpected.length&&!stale.length};
 fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));
 if (!report.passed) process.exitCode=1;

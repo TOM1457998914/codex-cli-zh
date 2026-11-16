@@ -7,7 +7,7 @@ $version = Get-Content -LiteralPath (Join-Path $projectRoot 'version.json') -Raw
 if (-not $Destination) { $Destination = Join-Path $projectRoot '.work\source' }
 $Destination = [IO.Path]::GetFullPath($Destination)
 function Invoke-Git([string[]]$Arguments) {
-    & git @Arguments
+    & git -c core.longpaths=true @Arguments
     if ($LASTEXITCODE -ne 0) { throw "Git failed: $($Arguments -join ' ')" }
 }
 $patch = Join-Path $projectRoot $version.patch

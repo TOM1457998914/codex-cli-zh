@@ -1,95 +1,183 @@
 {
-  "revision": "r6",
+  "revision": "r7",
+  "verifiedAt": "2026-11-16T23:09:47.794Z",
+  "upstreamVersion": "0.169.0",
   "upstreamCommit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
-  "testedPlatform": "Windows x64",
-  "testProfile": "dev-small",
+  "platform": "Windows x64",
+  "rustToolchain": "1.95.0",
+  "buildProfile": "dev-small",
+  "optimizedRelease": false,
+  "allUiTranslated": false,
   "uiTests": {
-    "passed": 363,
-    "failed": 0,
     "snapshotAutoUpdate": false,
-    "command": "cargo test --locked --profile dev-small -p codex-tui --lib -- keymap_setup:: analytics:: chatwidget::tests::plugin_catalog_tests chatwidget::tests::usage chatwidget::tests::skills_summary_tests app::daemon_menu:: bottom_pane::multi_select_picker:: bottom_pane::status_line_setup:: bottom_pane::title_setup:: tooltips:: config_panel:: app::tests::background_exit_tests bottom_pane::chat_composer::warning_notice:: app::exit_summary::localization_tests external_writer owned_bottom_pane_preserves_draft --nocapture"
+    "snapshotForcePass": false,
+    "retries": 0,
+    "testThreads": 4,
+    "runner": "cargo-nextest 0.9.95",
+    "profile": "local",
+    "ignoreDefaultFilter": true,
+    "passed": 6052,
+    "failed": 0,
+    "skipped": 4,
+    "runId": "f03e1e6b-6a65-4a55-a1d3-77ee612ec6b5",
+    "scope": "All codex-tui library unit tests",
+    "skippedTests": [
+      {
+        "name": "app::tests::clear_ui_after_long_transcript_snapshots_fresh_header_only",
+        "reason": "Upstream ignores different Windows snapshot path rendering"
+      },
+      {
+        "name": "chatwidget::tests::status_and_layout::configured_pet_load_is_deferred_until_after_construction",
+        "reason": "Upstream disables this test on Windows"
+      },
+      {
+        "name": "history_cell::tests::session_header_indicates_yolo_mode",
+        "reason": "Upstream ignores different Windows snapshot path rendering"
+      },
+      {
+        "name": "history_cell::tests::session_info_availability_nux_tooltip_snapshot",
+        "reason": "Upstream ignores different Windows snapshot path rendering"
+      }
+    ]
   },
-  "auditToolTests": {
-    "passed": 2,
+  "cliTests": {
+    "snapshotAutoUpdate": false,
+    "snapshotForcePass": false,
+    "retries": 0,
+    "testThreads": 4,
+    "runner": "cargo-nextest 0.9.95",
+    "profile": "local",
+    "ignoreDefaultFilter": true,
+    "passed": 310,
+    "failed": 0,
+    "skipped": 1,
+    "runId": "6a900404-a5ea-4497-81b6-e8337809aa90",
+    "scope": "All codex-cli codex binary unit tests",
+    "skippedTests": [
+      {
+        "name": "doctor::filesystem_paths::tests::blocked_probe_fixture",
+        "reason": "Upstream subprocess fixture for the bounded filesystem probe test"
+      }
+    ]
+  },
+  "cloudTests": {
+    "snapshotAutoUpdate": false,
+    "snapshotForcePass": false,
+    "retries": 0,
+    "testThreads": 4,
+    "runner": "cargo-nextest 0.9.95",
+    "profile": "local",
+    "ignoreDefaultFilter": true,
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0,
+    "runId": "591d0a6a-9cad-418b-b852-13dee62bc4cc",
+    "scope": "All codex-cloud-tasks library unit tests",
+    "sharedRunTotal": 88
+  },
+  "execTests": {
+    "snapshotAutoUpdate": false,
+    "snapshotForcePass": false,
+    "retries": 0,
+    "testThreads": 4,
+    "runner": "cargo-nextest 0.9.95",
+    "profile": "local",
+    "ignoreDefaultFilter": true,
+    "passed": 64,
+    "failed": 0,
+    "skipped": 0,
+    "runId": "591d0a6a-9cad-418b-b852-13dee62bc4cc",
+    "scope": "All codex-exec library unit tests",
+    "sharedRunTotal": 88
+  },
+  "totalUnitTestsPassed": 6450,
+  "totalUnitTestsFailed": 0,
+  "skippedTestsAlreadyPresentUpstream": true,
+  "contractToolTests": {
+    "passed": 5,
     "failed": 0
   },
-  "sourceScan": {
-    "files": 969,
-    "parseErrors": 0,
-    "englishUiCandidates": 1121,
-    "dynamicDisplaySites": 234,
-    "candidatesAreNotConfirmedLeaks": true
-  },
   "contracts": {
-    "checkedFiles": 203,
+    "checkedFiles": 333,
     "keymapActions": 171,
+    "indirectIdentifiersChecked": true,
+    "statusLookupKeysUnchanged": true,
+    "permissionClassifierUnchanged": true,
+    "voiceTelemetryUnchanged": true,
+    "doctorMachineReportUnchanged": true,
+    "pluginJsonPoliciesUnchanged": true,
     "slashDispatchUnchanged": true,
     "serializedStatusItemsUnchanged": true,
     "tooltipTokensUnchanged": true,
-    "reviewedChanges": 12,
+    "reviewedChanges": 33,
     "unexpected": [],
     "stale": [],
     "passed": true
   },
-  "preparedSource": {
-    "matchedFiles": 392,
-    "mismatches": 0
+  "sourceReproduction": {
+    "passed": true,
+    "checkedFiles": 1753,
+    "byteIdentical": 20,
+    "normalizedLineEndings": 1733,
+    "patchSha256": "d7f8641eed442ed80be7c91ee78ea8ef9b88fd2277c4e3b5070fd13fd716fe43"
+  },
+  "sourceScan": {
+    "sourceFiles": 970,
+    "parseErrors": 0,
+    "stringAndDynamicEntries": 20065,
+    "note": "Candidate classification is a review aid, not a translation-completion percentage."
+  },
+  "cliHelp": {
+    "catalogEntries": 231,
+    "commandTreeSchemaUnchanged": true,
+    "unknownTextFallback": true
   },
   "runtime": {
-    "revision": "r6",
-    "scope": "Actual read-only CLI states; passing a behavior check does not mean the whole screen is translated.",
+    "revision": "r7",
+    "passed": true,
+    "terminal": "Windows PTY, TERM=xterm-256color",
+    "banner": "Codex CLI · 本地中文源码版 r7 (v0.169.0)",
     "checks": [
-      {
-        "screen": "startup",
-        "passed": true,
-        "confirmedEnglish": [
-          "loading",
-          "Use the desktop app. Install it from ..."
-        ]
-      },
-      {
-        "screen": "/config overview",
-        "passed": true
-      },
-      {
-        "screen": "/config search: notify when",
-        "passed": true
-      },
-      {
-        "screen": "/config search: 通知",
-        "passed": true
-      },
-      {
-        "screen": "/keymap overview",
-        "passed": true
-      },
-      {
-        "screen": "/keymap search: list.move_up",
-        "passed": true
-      },
-      {
-        "screen": "/keymap action: 列表选择上移",
-        "passed": true,
-        "confirmedEnglish": [
-          "(disabled)"
-        ]
-      },
-      {
-        "screen": "exit/reconnect instructions",
-        "passed": true
-      }
+      "startup",
+      "/model",
+      "/presets",
+      "/resume",
+      "/permissions",
+      "/warnings",
+      "/keymap",
+      "/status model reasoning",
+      "exit and reconnect instructions",
+      "--help",
+      "mcp --help"
     ],
     "configUnchanged": true,
+    "officialExecutableUnchanged": true,
     "modelRequestsSubmitted": 0,
-    "settingsModified": 0
+    "settingsModified": 0,
+    "exitCode": 0,
+    "invalidArgumentExitCode": 2,
+    "installedBinaryMatchesPackage": true,
+    "installation": "Versioned current-user installation; existing codex-zh entry updated; previous r6 retained",
+    "confirmedEnglish": [
+      "TERM=dumb unsupported-terminal preflight warning",
+      "raw configuration field names and server-provided content"
+    ]
   },
-  "executableSha256": "29d3871200b808a11347aa2066675b58bc3c1cd4b2bc2765ce38d01c47a6dc46",
-  "allUiTranslated": false,
-  "knownGaps": [
-    "CLI help and generated headings",
-    "Desktop app promotion, transient loading and disabled-item suffix",
-    "Some login, diagnostics and low-frequency prompts",
-    "Server-provided names and messages",
-    "Other unreviewed runtime branches"
+  "package": {
+    "name": "codex-cli-zh-v0.169.0-zh.7-windows-x64.zip",
+    "sha256": "30c4460337f9bc980b5c92eb6010450742eabc3c4182be82a8e62ec9b08b3caf",
+    "bytes": 198081051,
+    "filesChecked": 52,
+    "executableSha256": "194d7914a6e2415efa23c08034faa9fdc11f8b5a45683ef64da7d5ed443b4b79",
+    "patchSha256": "d7f8641eed442ed80be7c91ee78ea8ef9b88fd2277c4e3b5070fd13fd716fe43",
+    "allManifestFilesVerified": true,
+    "installerVerifyOnlyPassed": true
+  },
+  "limits": [
+    "Unit tests cover the localized TUI, CLI, cloud-task and noninteractive-output crates; this is not the entire upstream workspace or all integration tests.",
+    "Runtime validation is on Windows x64 only; Linux and macOS were not tested.",
+    "Unknown server messages, third-party diagnostics, raw configuration field names and user/tool/model content can remain in their original language.",
+    "The unsigned community preview uses the unoptimized dev-small profile. Update with this project release package, not codex update.",
+    "The pinned Nextest version reports an unused profile.local.inherits setting; explicit runner flags and successful run summaries are recorded above."
   ]
 }
