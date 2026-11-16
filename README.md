@@ -6,7 +6,7 @@
 
 [![校验](https://github.com/TOM1457998914/codex-cli-zh/actions/workflows/verify.yml/badge.svg)](https://github.com/TOM1457998914/codex-cli-zh/actions/workflows/verify.yml)
 ![上游](https://img.shields.io/badge/Codex-0.169.0-111827)
-![修订](https://img.shields.io/badge/中文修订-r5-0f766e)
+![修订](https://img.shields.io/badge/中文修订-r6-0f766e)
 ![平台](https://img.shields.io/badge/已验证-Windows_x64-2563eb)
 ![许可证](https://img.shields.io/badge/license-Apache--2.0-green)
 
@@ -18,7 +18,7 @@
 
 这是基于 [OpenAI Codex](https://github.com/openai/codex) 官方源码制作的**非官方简体中文本地化项目**。通过固定版本的源码补丁构建，保留命令名称、配置键、快捷键绑定、协议标识和用户内容。
 
-**当前为 r5 预览版本，汉化仍在进行。** 主要日常菜单已完成多轮检查；命令行帮助、部分低频提示和服务端动态文字仍有英文。项目不声称百分之百汉化，也不属于 OpenAI 官方产品。
+**当前为 r6 预览版本，汉化仍在进行。** 主要日常菜单已完成多轮检查；命令行帮助、部分低频提示和服务端动态文字仍有英文。项目不声称百分之百汉化，也不属于 OpenAI 官方产品。
 
 ## 可以直接使用的内容
 
@@ -32,13 +32,13 @@
 | 使用提示 | 44 条中文提示，保留命令与自定义快捷键引用 |
 | 中文排版 | 修正宽字符对齐、图表月份、窄窗口换行及截断 |
 
-r5 新补充了 **842 处显示文本**。已验证的本地回归集为 **307 项通过、0 项失败**；另外检查了 171 个快捷键操作的标识与启用条件没有变化。详情见 [验证记录](docs/verification.json)。这些数字描述本轮检查范围，不代表整个上游仓库的测试均已运行。
+r6 修复设置搜索、快捷键说明匹配、退出用量摘要和中文列宽问题，并补齐警告及会话占用提示。本地回归集 **363 项通过、0 项失败**；新增检查覆盖 203 个修改过的生产源文件、171 个快捷键标识、命令分发和配置序列化值。结果见 [验证记录](docs/verification.json)，已确认的问题与检查边界见 [排查记录](docs/AUDIT-r6.md)。本地测试范围不等于完整上游测试集。
 
 ## 快速开始
 
 目前提供 Windows x64 预览包，使用 PowerShell 7 安装。
 
-1. 在 [Releases](https://github.com/TOM1457998914/codex-cli-zh/releases) 下载 `codex-cli-zh-v0.169.0-zh.5-windows-x64.zip`。
+1. 在 [Releases](https://github.com/TOM1457998914/codex-cli-zh/releases) 下载 `codex-cli-zh-v0.169.0-zh.6-windows-x64.zip`。
 2. 解压到一个新目录，进入该目录后运行：
 
 ```powershell
@@ -51,12 +51,12 @@ pwsh -NoProfile -File .\install.ps1
 codex-zh
 ```
 
-启动标题应包含 **「本地中文源码版 r5」**。官方 `codex` 命令保持独立；两个入口使用同一份 Codex 账号、配置与聊天数据。
+启动标题应包含 **「本地中文源码版 r6」**。官方 `codex` 命令保持独立；两个入口使用同一份 Codex 账号、配置与聊天数据。
 
 也可以下载本仓库后，让安装脚本获取指定发布包并校验 SHA-256：
 
 ```powershell
-pwsh -NoProfile -File .\scripts\Install.ps1 -Version v0.169.0-zh.5
+pwsh -NoProfile -File .\scripts\Install.ps1 -Version v0.169.0-zh.6
 ```
 
 只想先验证安装包：
@@ -89,7 +89,7 @@ pwsh -NoProfile -File .\scripts\Build-Windows.ps1
 | 上游版本 | `0.169.0` |
 | 上游标签 | `rust-v0.169.0` |
 | 上游提交 | `d32063f96c2dff1dc96af839b3952abb6acfeda4` |
-| 本地化修订 | `r5` / `v0.169.0-zh.5` |
+| 本地化修订 | `r6` / `v0.169.0-zh.6` |
 | 已验证平台 | Windows x64 |
 
 安装器保留已经安装的旧版本。需要回退时，运行旧版本目录内的 `install.ps1`，即可重新选择该版本。查看安装的版本目录：
