@@ -1,0 +1,35 @@
+{
+  "revision": "r5",
+  "upstreamCommit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
+  "testedPlatform": "Windows x64",
+  "testProfile": "dev-small",
+  "uiTests": {
+    "passed": 307,
+    "failed": 0,
+    "command": "cargo test --locked --profile dev-small -p codex-tui --lib -- keymap_setup:: analytics:: chatwidget::tests::plugin_catalog_tests chatwidget::tests::usage chatwidget::tests::skills_summary_tests app::daemon_menu:: bottom_pane::multi_select_picker:: bottom_pane::status_line_setup:: bottom_pane::title_setup:: tooltips::"
+  },
+  "sourceScan": {
+    "files": 969,
+    "parseErrors": 0,
+    "englishUiCandidates": 1126,
+    "dynamicDisplaySites": 234
+  },
+  "contracts": {
+    "revision": "r5",
+    "keymapActionsChecked": 171,
+    "keymapIdsAndFeatureGatesUnchanged": true,
+    "keymapDescriptionsChinese": true,
+    "statusAndTitleSerializationUnchanged": true,
+    "tooltipLines": 44,
+    "tooltipCommandsAndShortcutIdsUnchanged": true,
+    "contractFiles": 45,
+    "contractsUnchanged": true
+  },
+  "allUiTranslated": false,
+  "knownGaps": [
+    "CLI command help and generated help headings",
+    "Warning-count labels",
+    "Some server-provided feature names and diagnostics",
+    "Unreviewed low-frequency UI branches"
+  ]
+}
