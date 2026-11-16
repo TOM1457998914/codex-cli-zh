@@ -1,0 +1,47 @@
+# Tips support Markdown: **emphasis**, `code`, and [label](https://example.com) links.
+# Tips may use {key:context.action} to insert the configured primary key or chord.
+# A tip is skipped if any referenced action is unbound or unavailable.
+使用 **/new** 开始新的想法，之前的会话仍会保留在历史记录中。
+发现异常时，可以使用 **/feedback** 向维护者发送反馈和日志。
+使用 **/model** 快速切换模型或推理强度。
+使用 **/permissions** 设置 Codex 何时需要请求确认。
+使用 **/review** 审查当前的代码改动。
+使用 **/skills** 查看可用技能，也可以直接让 Codex 使用某项技能。
+使用 **/status** 查看当前模型、审批设置和 token 用量。
+使用 **/statusline** 选择状态栏中显示的内容。
+使用 **/fork** 为当前聊天创建一个新分支。
+使用 **/side** 在临时分支中展开旁支聊天，保持主聊天内容清晰。
+使用 **/init** 创建记录项目规则的 `AGENTS.md` 文件。
+使用 **/mcp** 查看已配置的 MCP 工具。
+使用 **/rename** 重命名聊天，方便以后继续。
+有关 API 的问题可以使用 OpenAI 文档 MCP；运行 `codex mcp add openaiDeveloperDocs --url https://developers.openai.com/mcp` 即可启用。
+欢迎访问 [Codex 社区论坛](https://community.openai.com/c/codex/37)。
+在 Codex 中使用 `!` 可以运行 Shell 命令，例如 `!ls`。
+输入 `/` 打开命令菜单，按 `Tab` 自动补全斜杠命令。
+输入框为空时，按 `Esc` 返回并编辑上一条消息，再按 `Enter` 确认。
+任务运行时，按 {key:composer.queue} 将消息加入队列；其他时候会立即发送（`!` 命令除外）。
+使用 **/keymap** 设置键盘快捷键。
+按 `Ctrl+V` 粘贴图片，将其附加到下一条消息。
+运行 `codex resume` 可以继续之前的聊天。
+使用 **/copy** 或按 {key:global.copy}，将最近一次代理回答复制为 Markdown。
+使用 **/vim** 开关输入框的 Vim 编辑模式。
+从 Claude Code 迁移？使用 **/import** 导入配置、项目和最近的聊天。
+使用 **/hooks** 查看和管理生命周期钩子。
+使用 **/archive** 归档当前会话。
+支持工作树时，使用 **/worktree** 在独立的 Git 工作树中开始或继续聊天。
+重新打开旧聊天时，可以使用 **/recap** 生成摘要。
+支持语音时，使用 **/voice** 开始或停止语音聊天，也可以通过 **/voice settings** 选择声音。
+启用目标功能后，使用 **/goal** 设置或查看长期任务的目标。
+使用 **/agents** 打开代理管理中心。
+使用 **/subagents** 切换当前会话的子代理。
+使用 **/export** 将聊天保存为 Markdown。
+通过 ChatGPT 登录后，使用 **/usage** 查看账号用量及可用的额度重置次数。
+使用 **/title** 选择终端标题中显示的内容。
+使用 **/theme** 选择代码语法高亮主题。
+启用插件功能后，使用 **/plugins** 浏览插件。
+按 {key:global.open_transcript} 打开完整聊天记录。
+按 {key:global.find_transcript} 搜索当前聊天。
+按 {key:global.open_external_editor} 在外部编辑器中编辑当前草稿。
+按 {key:composer.history_search_previous} 搜索之前输入过的提示词。
+对于支持调整推理强度的模型，按 {key:chat.increase_reasoning_effort} 提高强度，按 {key:chat.decrease_reasoning_effort} 降低强度。
+按 {key:chat.open_presets}，再按 0–9 使用预设；Enter 浏览，s 保存，d 删除。

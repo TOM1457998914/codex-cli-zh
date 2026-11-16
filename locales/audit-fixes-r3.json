@@ -1,0 +1,121 @@
+{
+ "presets": {
+  "files": ["chatwidget/quick_dials.rs", "app/quick_dials.rs", "app/workspace_hud.rs"],
+  "translations": {
+   "Presets":"预设",
+   "Presets ›":"预设 ›",
+   "No presets saved. Press n to create one.":"尚未保存预设。按 n 新建一个。",
+   "new":"新建",
+   "from settings":"从当前设置创建",
+   "edit":"编辑",
+   "delete":"删除",
+   "close":"关闭",
+   "empty":"空位",
+   "Images cannot be copied into a preset. Starting with empty text.":"图片无法复制到预设中，将从空白文本开始。",
+   "Linked mentions cannot be copied into a preset. Starting with empty text.":"关联引用无法复制到预设中，将从空白文本开始。",
+   "The current model cannot be recalled with /model.":"无法通过 /model 恢复当前模型。",
+   "Choose an available reasoning effort with /model before saving.":"保存前，请先用 /model 选择可用的推理强度。",
+   "Choose an available speed with /model before saving.":"保存前，请先用 /model 选择可用的速度档位。",
+   "Choose available terminal-title items with /title before saving.":"保存前，请先用 /title 选择可用的终端标题项目。",
+   "Choose available status-line items with /statusline before saving.":"保存前，请先用 /statusline 选择可用的状态栏项目。",
+   "Presets are unavailable in this conversation.":"此聊天中无法使用预设。",
+   "Presets are available after startup completes.":"启动完成后即可使用预设。",
+   "Preset {slot}: {reason}":"预设 {slot}：{reason}",
+   "Save preset to slot":"选择预设保存位置",
+   "Edit a preset":"编辑预设",
+   "Delete a preset":"删除预设",
+   "New preset":"新建预设",
+   "Edit preset {slot}":"编辑预设 {slot}",
+   "review changes":"检查更改",
+   "choose slot":"选择位置",
+   "Write a prompt or slash command":"输入提示词或斜杠命令",
+   "The approval policy cannot be recalled.":"无法恢复此审批策略。",
+   "The permission profile name cannot be recalled.":"无法恢复此权限方案名称。",
+   "Select a named permission profile with /permissions first.":"请先用 /permissions 选择一个具名权限方案。",
+   "Current model":"当前模型",
+   "Current permissions":"当前权限",
+   "Current terminal title":"当前终端标题",
+   "Current status line":"当前状态栏",
+   "Start preset from current settings":"从当前设置创建预设",
+   "{action} preset {slot}?":"{action}预设 {slot}？",
+   "{action} preset {slot}":"{action}预设 {slot}",
+   "Preset {slot} is defined outside your user config. Edit its source configuration instead.":"预设 {slot} 定义在用户配置之外，请编辑其来源配置。",
+   "Failed to update preset {slot}: {}":"更新预设 {slot} 失败：{}",
+   "Saved preset {slot}.":"已保存预设 {slot}。",
+   "Deleted preset {slot}.":"已删除预设 {slot}。"
+  }
+ },
+ "prompt_footer": {
+  "files": ["bottom_pane/custom_prompt_view.rs", "bottom_pane/custom_prompt_view/picker.rs"],
+  "translations": {"submit":"提交", " back":" 返回"}
+ },
+ "memories": {
+  "files": ["bottom_pane/memories_settings_view.rs"],
+  "translations": {
+   "Choose how Codex uses and creates memories. Changes are saved to config.toml":"选择 Codex 如何使用和生成记忆。更改会保存到 config.toml。",
+   "This clears local memory files and rollout summaries for the current Codex home.":"这会清除当前 Codex 配置目录中的本地记忆文件和会话摘要。",
+   " cancel":" 取消"
+  }
+ },
+ "feedback": {
+  "files": ["bottom_pane/feedback_note_view.rs", "bottom_pane/feedback_view.rs"],
+  "translations": {
+   "cancel":"取消", "save":"保存",
+   "Feedback sent to OpenAI may be used to improve our models and products":"发送给 OpenAI 的反馈可能用于改进模型和产品",
+   ". Please avoid sharing tented information under NDA, or privileged, HR-related, or sensitive personal information.":"。请勿分享受保密协议保护的信息、特权保密信息、人事相关信息或敏感个人信息。",
+   "Feedback sent to OpenAI can be used to improve ChatGPT. ":"发送给 OpenAI 的反馈可能用于改进 ChatGPT。 ",
+   "  Sentry Feedback ID: ":"  Sentry 反馈编号：",
+   "  Sentry URL: ":"  Sentry 链接：",
+   "  Or mention your thread ID ":"  或在已有问题中注明你的聊天编号 ",
+   " in an existing issue.":"。",
+   "  Thread ID: ":"  聊天编号："
+  }
+ },
+ "warnings": {
+  "files": ["bottom_pane/warnings_view_render.rs"],
+  "translations": {"cancel":"取消", "copy":"复制"}
+ },
+ "goal": {
+  "files": ["app/thread_goal_actions.rs"],
+  "translations": {
+   "No goal is currently set.":"当前尚未设置目标。",
+   "Goal {}":"目标 {}",
+   "Goal cleared":"目标已清除",
+   "No goal to clear":"没有可清除的目标",
+   "This thread does not currently have a goal.":"此聊天当前没有目标。",
+   "Replace goal?":"替换当前目标？",
+   "New objective: {}":"新目标：{}",
+   "Create a goal before editing it.":"请先创建目标，再进行编辑。"
+  }
+ },
+ "export_status": {
+  "files": ["app/transcript_export.rs", "chatwidget/copy_picker.rs"],
+  "translations": {
+   "Saved conversation to {}":"对话已保存到 {}",
+   "• Saved conversation to ":"• 对话已保存到 ",
+   "• Copied conversation to clipboard":"• 已将对话复制到剪贴板",
+   "• Copy unconfirmed; /export saves chat":"• 无法确认复制结果；可用 /export 保存对话",
+   "■ Export failed: ":"■ 导出失败：",
+   "■ Copy failed: ":"■ 复制失败：",
+   "No conversation content to export.":"没有可导出的对话内容。",
+   "{language} code":"{language} 代码"
+  }
+ },
+ "pets": {
+  "files": ["pets/preview.rs"],
+  "translations": {
+   "Loading preview...":"正在加载预览……",
+   "Terminal pets disabled":"终端宠物已停用",
+   "No pet will be shown.":"将不显示宠物。",
+   "Preview unavailable":"预览不可用"
+  }
+ },
+ "hooks": {
+  "files": ["startup_hooks_review.rs"],
+  "translations": {
+   "Hooks need review":"需要审查触发钩子",
+   "Hooks can run outside the sandbox after you trust them.":"信任触发钩子后，它们可以在沙箱外运行。",
+   "Trusting hooks...":"正在信任触发钩子……"
+  }
+ }
+}

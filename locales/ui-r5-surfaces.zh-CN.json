@@ -1,0 +1,70 @@
+{
+ "multiSelect": {"files":["bottom_pane/multi_select_picker.rs"],"translations":{" toggle":" 切换"," reorder":" 调整顺序","save":"保存","cancel":"取消"}},
+ "surfaces": {
+  "files":["bottom_pane/title_setup.rs","bottom_pane/status_line_setup.rs","bottom_pane/status_surface_preview.rs","config_panel/mod.rs"],
+  "translations":{
+   "Config profile selected with --profile (omitted when unset)":"通过 --profile 选择的配置方案（未设置时隐藏）",
+   "Open pull request number for the current branch (omitted when unavailable)":"当前分支的未合并 PR 编号（不可用时隐藏）",
+   "Committed branch changes against the default branch (omitted when unavailable)":"当前分支相对默认分支已提交的改动（不可用时隐藏）",
+   "Spinner while working, action-required message while blocked":"运行时显示进度动画，需要你处理时显示提示",
+   "Compact session run-state text (Ready, Working, Thinking)":"简短的会话运行状态（就绪、工作中、思考中）",
+   "Percentage of context window remaining (omitted when unknown)":"上下文窗口剩余百分比（未知时隐藏）",
+   "Percentage of context window used (omitted when unknown)":"上下文窗口已用百分比（未知时隐藏）",
+   "Remaining usage on the primary usage limit (omitted when unavailable)":"主要用量额度的剩余量（不可用时隐藏）",
+   "Remaining usage on the secondary usage limit (omitted when unavailable)":"次要用量额度的剩余量（不可用时隐藏）",
+   "Total context window size in tokens (omitted when unknown)":"上下文窗口的 token 总容量（未知时隐藏）",
+   "Estimated current-thread credits (Enterprise workspaces only; omitted when unavailable)":"当前聊天估算消耗的点数（仅限企业工作区，不可用时隐藏）",
+   "Estimated current-thread cost in USD (Enterprise workspaces only; omitted when unavailable)":"当前聊天估算的美元费用（仅限企业工作区，不可用时隐藏）",
+   "Estimated current-thread cost (Enterprise workspaces only; omitted when unavailable)":"当前聊天估算费用（仅限企业工作区，不可用时隐藏）",
+   "Current thread identifier (omitted until thread starts)":"当前聊天的标识（聊天开始前隐藏）",
+   "Current thread title, or thread identifier when unnamed":"当前聊天标题，未命名时显示聊天标识",
+   "Workspace notification headline (Enterprise workspaces only; omitted when unavailable)":"工作区通知标题（仅限企业工作区，不可用时隐藏）",
+   "Latest task progress from update_plan (omitted until available)":"最近一次 update_plan 报告的任务进度（不可用时隐藏）",
+   "Remaining usage on the 5-hour usage limit (omitted when unavailable)":"5 小时额度的剩余量（不可用时隐藏）",
+   "Remaining usage on the daily usage limit (omitted when unavailable)":"每日额度的剩余量（不可用时隐藏）",
+   "Remaining usage on the weekly usage limit (omitted when unavailable)":"每周额度的剩余量（不可用时隐藏）",
+   "Remaining usage on the monthly usage limit (omitted when unavailable)":"每月额度的剩余量（不可用时隐藏）",
+   "Remaining usage on the annual usage limit (omitted when unavailable)":"年度额度的剩余量（不可用时隐藏）",
+   "thread name":"聊天名称","thread title":"聊天标题","Context 0% left":"上下文剩余 0%","Context 0% used":"上下文已用 0%",
+   "primary 0%":"主要额度 0%","secondary 0%":"次要额度 0%","0 window":"窗口容量 0","0 used":"已用 0","0 in":"输入 0","0 out":"输出 0",
+   "5.2 credits":"5.2 点数","Daybreak off":"Daybreak 已停用","raw output":"原始输出","profile: <name>":"配置方案：<name>","provider: <id>":"服务商：<id>",
+   "Tasks 0/0":"任务 0/0","{preference} · Unavailable":"{preference} · 不可用"
+  }
+ },
+ "usageMenu":{"files":["chatwidget/usage.rs"],"translations":{
+   "{available_count} available":"可用 {available_count} 次","open":"打开","Loading...":"正在加载…","{} {} available.":"可用 {} 次{}。",
+   "choose":"选择","confirm":"确认","That reset is no longer available. Refresh to see your current resets.":"此重置已不可用，请刷新查看当前可用次数。",
+   "Usage reset. You have {available_count} {} left.":"用量已重置，还剩 {available_count} 次{}。","Refreshing...":"正在刷新…",
+   "You have {available_count} {} available. Run /usage to use one.":"你有 {available_count} 次可用的{}。运行 /usage 可使用一次。",
+   "back":"返回","usage limit reset":"用量额度重置","usage limit resets":"用量额度重置"
+ }},
+ "rateLimitPrompts":{"files":["chatwidget/rate_limits.rs"],"translations":{
+   "Heads up, you have less than {remaining_percent:.0}% of your {limit_label} limit left. Run /status for a breakdown.":"提醒：{limit_label}额度剩余不足 {remaining_percent:.0}%。运行 /status 可查看详情。",
+   "You’re no longer close to your usage limit.":"当前用量已不再接近额度上限。",
+   "Dismissing in {seconds} {unit}…":"将在 {seconds} {unit}后关闭…","second":"秒","seconds":"秒","Dismiss":"关闭",
+   "Uses fewer credits for upcoming turns":"接下来的对话轮次会消耗更少点数","Switch to {switch_model}":"切换到 {switch_model}",
+   "Keep current model":"保留当前模型","Keep current model (never show again)":"保留当前模型（不再提示）",
+   "Hide future rate limit reminders about switching models":"以后不再显示切换模型的额度提醒",
+   "Approaching rate limits":"即将达到用量上限","Switch to {switch_model} for lower credit usage?":"切换到 {switch_model} 以减少点数消耗？",
+   "You've reached your workspace credit limit":"已达到工作区点数上限",
+   "Your workspace is out of credits. Ask your workspace owner to add more. Notify owner?":"工作区点数已用完，需要工作区所有者补充。是否通知所有者？",
+   "Usage limit reached":"已达到用量上限","Request a limit increase from your owner to continue using codex. Request increase?":"需要向工作区所有者申请提高额度才能继续使用 Codex。是否提交申请？",
+   "No (default)":"否（默认）","Workspace owner notified.":"已通知工作区所有者。",
+   "Workspace owner was already notified recently.":"最近已通知过工作区所有者。","Could not notify your workspace owner. Please try again.":"无法通知工作区所有者，请重试。",
+   "Limit increase requested.":"已申请提高额度。","A limit increase was already requested recently.":"最近已提交过提高额度的申请。",
+   "Could not request a limit increase. Please try again.":"无法申请提高额度，请重试。"
+ }},
+ "rateLimitRows":{"files":["status/rate_limits.rs"],"translations":{"{limit_bucket_label} limit":"{limit_bucket_label} 额度","{} {} limit":"{} {}额度","{} limit":"{}额度"}},
+ "mcp":{"files":["history_cell/mcp.rs"],"translations":{
+   "Unknown":"未知","Unsupported":"不支持","Not logged in":"未登录","Bearer token":"Bearer 令牌","interrupted":"已中断",
+   "Called":"已调用","Calling":"正在调用","Returned image":"返回的图片","Error: {error}":"错误：{error}","Failed":"失败","Error: {err}":"错误：{err}",
+   "    See the ":"    请参阅 ","MCP docs":"MCP 文档"," to configure them.":" 进行配置。",
+   "MCP Tools":"MCP 工具","  • No MCP servers configured.":"  • 尚未配置 MCP 服务器。","  • No MCP tools available.":"  • 没有可用的 MCP 工具。",
+   "connected":"已连接","starting":"正在启动","authentication required":"需要授权","failed":"失败","not started":"尚未启动","disabled":"已停用","cancelled":"已取消","unknown":"未知",
+   "tool":"个工具","tools":"个工具","    • Auth: ":"    • 授权：","    • Tools: (none)":"    • 工具：（无）","    • Tools: ":"    • 工具：",
+   "    • Resources: (none)":"    • 资源：（无）","    • Resources: ":"    • 资源：","    • Resource templates: (none)":"    • 资源模板：（无）","    • Resource templates: ":"    • 资源模板：",
+   "  Use /mcp verbose for tools and resources.":"  使用 /mcp verbose 查看工具及资源。","Loading MCP inventory":"正在加载 MCP 列表","Loading MCP inventory...":"正在加载 MCP 列表…"
+ }},
+ "agentFooter":{"files":["app/agent_center/hints.rs"],"function":"center_footer_hints","translations":{"help":"帮助","back":"返回","move":"移动","rename":"重命名","open":"打开","new":"新建"}},
+ "agentRows":{"files":["app/agent_center/rows.rs"],"translations":{"Reconnecting…":"正在重新连接…","  voice":"  语音"}}
+}

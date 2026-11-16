@@ -1,0 +1,10 @@
+{
+ "Default":"默认","Plan":"计划模式","5h":"5 小时","daily":"每日","weekly":"每周","monthly":"每月","annual":"每年","usage":"主要用量","secondary usage":"次要用量",
+ "app-name":"应用名称","project-name":"项目名称","current-dir":"当前目录","activity":"活动提示","run-state":"运行状态","thread-name":"聊天名称","thread-title":"聊天标题","git-branch":"Git 分支",
+ "context-remaining":"上下文剩余比例","context-used":"上下文已用比例","five-hour-limit":"5 小时额度","weekly-limit":"每周额度","codex-version":"Codex 版本","used-tokens":"已用 token",
+ "total-input-tokens":"输入 token 总数","total-output-tokens":"输出 token 总数","thread-credits":"聊天点数","estimated-thread-cost":"聊天估算费用","thread-id":"聊天 ID","task-progress":"任务进度",
+ "model":"模型","model-with-reasoning":"模型与推理强度","reasoning":"推理强度","config-profile":"配置方案","profile":"配置方案","model-provider":"模型服务商","provider":"模型服务商",
+ "hostname":"主机名称","pull-request-number":"PR 编号","branch-changes":"分支改动","permissions":"操作权限","approval-mode":"审批模式","context-window-size":"上下文容量",
+ "fast-mode":"快速模式","daybreak":"Daybreak","raw-output":"原始输出","workspace-headline":"工作区通知","usage-limit":"主要用量额度","secondary-usage-limit":"次要用量额度",
+ "daily-limit":"每日额度","monthly-limit":"每月额度","annual-limit":"年度额度"
+}
