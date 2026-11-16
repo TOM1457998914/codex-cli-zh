@@ -1,0 +1,15 @@
+{
+  "file": "chatwidget/rendering.rs",
+  "scope": "ExternalWriterNotice and fork progress display",
+  "translations": {
+    "This conversation is open in another app": "此会话已在其他应用中打开",
+    "Close it there and press R to continue here.": "请先在其他应用中关闭此会话，再按 R 在这里继续。",
+    " to retry": " 重试",
+    "retry": "重试",
+    "fork": "创建分支",
+    "command center": "管理中心",
+    "exit": "退出",
+    "transcript": "聊天记录",
+    "Forking conversation…": "正在创建会话分支…"
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "label": "折叠轮次详情",
+    "englishAlias": "Sessions Collapse turn details"
+  },
+  {
+    "label": "右键粘贴",
+    "englishAlias": "Text selection Right-click paste"
+  },
+  {
+    "label": "复制后取消选中",
+    "englishAlias": "Text selection Deselect after copy"
+  },
+  {
+    "label": "选中即复制",
+    "englishAlias": "Text selection Copy on select"
+  },
+  {
+    "label": "模型服务商",
+    "englishAlias": "Sessions Model providers"
+  },
+  {
+    "label": "继续聊天时的目录",
+    "englishAlias": "Sessions Resume directory"
+  },
+  {
+    "label": "会话列表布局",
+    "englishAlias": "Sessions Session picker layout"
+  },
+  {
+    "label": "自动生成摘要",
+    "englishAlias": "Sessions Automatic recaps"
+  },
+  {
+    "label": "粘贴检测",
+    "englishAlias": "Input Paste detection"
+  },
+  {
+    "label": "默认使用 Vim 模式",
+    "englishAlias": "Input Start in Vim mode"
+  },
+  {
+    "label": "键盘快捷键",
+    "englishAlias": "Input Keyboard shortcuts"
+  },
+  {
+    "label": "测试通知",
+    "englishAlias": "Notifications Test notification"
+  },
+  {
+    "label": "通知时机",
+    "englishAlias": "Notifications Notify when"
+  },
+  {
+    "label": "通知",
+    "englishAlias": "Notifications Notifications"
+  },
+  {
+    "label": "终端标题内容",
+    "englishAlias": "Appearance Terminal title display"
+  },
+  {
+    "label": "状态栏内容",
+    "englishAlias": "Appearance Status line display"
+  },
+  {
+    "label": "状态栏配色",
+    "englishAlias": "Appearance Status line colors"
+  },
+  {
+    "label": "使用提示",
+    "englishAlias": "Appearance Tips"
+  },
+  {
+    "label": "视觉效果",
+    "englishAlias": "Appearance Effects"
+  },
+  {
+    "label": "主题",
+    "englishAlias": "Appearance Theme"
+  }
+]

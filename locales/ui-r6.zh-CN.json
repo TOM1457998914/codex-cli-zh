@@ -1,0 +1,12 @@
+{
+  "app/input.rs": {
+    "Task is still running": "任务仍在运行",
+    "Choose what happens to the current task.": "请选择如何处理当前任务。",
+    "Cancel task": "停止任务",
+    "Stop the current task and stay in Codex": "停止当前任务，继续留在 Codex",
+    "Run in background": "在后台继续",
+    "Exit Codex and leave the task running": "退出 Codex，让当前任务继续运行",
+    "Exit": "停止并退出",
+    "Stop the current task and exit Codex": "停止当前任务并退出 Codex"
+  }
+}
