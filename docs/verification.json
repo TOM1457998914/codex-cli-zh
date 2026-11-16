@@ -1,35 +1,95 @@
 {
-  "revision": "r5",
+  "revision": "r6",
   "upstreamCommit": "d32063f96c2dff1dc96af839b3952abb6acfeda4",
   "testedPlatform": "Windows x64",
   "testProfile": "dev-small",
   "uiTests": {
-    "passed": 307,
+    "passed": 363,
     "failed": 0,
-    "command": "cargo test --locked --profile dev-small -p codex-tui --lib -- keymap_setup:: analytics:: chatwidget::tests::plugin_catalog_tests chatwidget::tests::usage chatwidget::tests::skills_summary_tests app::daemon_menu:: bottom_pane::multi_select_picker:: bottom_pane::status_line_setup:: bottom_pane::title_setup:: tooltips::"
+    "snapshotAutoUpdate": false,
+    "command": "cargo test --locked --profile dev-small -p codex-tui --lib -- keymap_setup:: analytics:: chatwidget::tests::plugin_catalog_tests chatwidget::tests::usage chatwidget::tests::skills_summary_tests app::daemon_menu:: bottom_pane::multi_select_picker:: bottom_pane::status_line_setup:: bottom_pane::title_setup:: tooltips:: config_panel:: app::tests::background_exit_tests bottom_pane::chat_composer::warning_notice:: app::exit_summary::localization_tests external_writer owned_bottom_pane_preserves_draft --nocapture"
+  },
+  "auditToolTests": {
+    "passed": 2,
+    "failed": 0
   },
   "sourceScan": {
     "files": 969,
     "parseErrors": 0,
-    "englishUiCandidates": 1126,
-    "dynamicDisplaySites": 234
+    "englishUiCandidates": 1121,
+    "dynamicDisplaySites": 234,
+    "candidatesAreNotConfirmedLeaks": true
   },
   "contracts": {
-    "revision": "r5",
-    "keymapActionsChecked": 171,
-    "keymapIdsAndFeatureGatesUnchanged": true,
-    "keymapDescriptionsChinese": true,
-    "statusAndTitleSerializationUnchanged": true,
-    "tooltipLines": 44,
-    "tooltipCommandsAndShortcutIdsUnchanged": true,
-    "contractFiles": 45,
-    "contractsUnchanged": true
+    "checkedFiles": 203,
+    "keymapActions": 171,
+    "slashDispatchUnchanged": true,
+    "serializedStatusItemsUnchanged": true,
+    "tooltipTokensUnchanged": true,
+    "reviewedChanges": 12,
+    "unexpected": [],
+    "stale": [],
+    "passed": true
   },
+  "preparedSource": {
+    "matchedFiles": 392,
+    "mismatches": 0
+  },
+  "runtime": {
+    "revision": "r6",
+    "scope": "Actual read-only CLI states; passing a behavior check does not mean the whole screen is translated.",
+    "checks": [
+      {
+        "screen": "startup",
+        "passed": true,
+        "confirmedEnglish": [
+          "loading",
+          "Use the desktop app. Install it from ..."
+        ]
+      },
+      {
+        "screen": "/config overview",
+        "passed": true
+      },
+      {
+        "screen": "/config search: notify when",
+        "passed": true
+      },
+      {
+        "screen": "/config search: 通知",
+        "passed": true
+      },
+      {
+        "screen": "/keymap overview",
+        "passed": true
+      },
+      {
+        "screen": "/keymap search: list.move_up",
+        "passed": true
+      },
+      {
+        "screen": "/keymap action: 列表选择上移",
+        "passed": true,
+        "confirmedEnglish": [
+          "(disabled)"
+        ]
+      },
+      {
+        "screen": "exit/reconnect instructions",
+        "passed": true
+      }
+    ],
+    "configUnchanged": true,
+    "modelRequestsSubmitted": 0,
+    "settingsModified": 0
+  },
+  "executableSha256": "29d3871200b808a11347aa2066675b58bc3c1cd4b2bc2765ce38d01c47a6dc46",
   "allUiTranslated": false,
   "knownGaps": [
-    "CLI command help and generated help headings",
-    "Warning-count labels",
-    "Some server-provided feature names and diagnostics",
-    "Unreviewed low-frequency UI branches"
+    "CLI help and generated headings",
+    "Desktop app promotion, transient loading and disabled-item suffix",
+    "Some login, diagnostics and low-frequency prompts",
+    "Server-provided names and messages",
+    "Other unreviewed runtime branches"
   ]
 }

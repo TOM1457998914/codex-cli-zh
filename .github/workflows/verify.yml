@@ -27,3 +27,9 @@ jobs:
       - name: 在固定上游提交上检查补丁
         shell: pwsh
         run: ./scripts/Prepare-Source.ps1 -SkipVendor
+      - name: 检查契约审计工具
+        run: |
+          cargo test --locked --manifest-path tools/Cargo.toml --target-dir .work/contracts-target
+          cargo build --locked --manifest-path tools/Cargo.toml --target-dir .work/contracts-target
+      - name: 核对协议、配置键、快捷键和命令标识
+        run: node tools/verify-contracts.mjs
